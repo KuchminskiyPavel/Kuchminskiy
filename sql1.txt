@@ -1,0 +1,84 @@
+DROP TABLE movie;
+CREATE TABLE "movie" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"name"	TEXT NOT NULL,
+	"surname"	TEXT NOT NULL,
+	"age"	INTEGER NOT NULL CHECK(age>5 and age<99),
+	"movie_name"	TEXT,
+	"budget"	INTEGER DEFAULT 10000000,
+	"manager"	TEXT,
+	"release_year"	INTEGER,
+	"sex"	TEXT NOT NULL CHECK(sex = "male" or sex = "female"), fee_actors REAL, city TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)
+INSERT INTO "movie" ("name", "surname", "age", "movie_name", "manager", "release_year", "sex")
+VALUES ('Tom', 'Hanks', 65, 'Forrest Gump', 'Steven Spielberg', 1994, 'male'),
+       ('Meryl', 'Streep', 72, 'The Devil Wears Prada', 'Kevin Huvane', 2006, 'female'),
+       ('Leonardo', 'DiCaprio', 48, 'The Wolf of Wall Street', 'Rick Yorn', 2013, 'male'),
+       ('Jennifer', 'Lawrence', 31, 'Silver Linings Playbook', 'Jennifer Justman', 2012, 'female'),
+       ('Brad', 'Pitt', 59, 'Fight Club', 'Cynthia Pett-Dante', 1999, 'male'),
+       ('Charlize', 'Theron', 48, 'Mad Max: Fury Road', 'Beth Kono', 2015, 'female'),
+       ('Denzel', 'Washington', 67, 'Training Day', 'Todd Black', 2001, 'male'),
+       ('Natalie', 'Portman', 41, 'Black Swan', 'Alejandro Amenábar', 2010, 'female'),
+       ('Robert', 'De Niro', 80, 'Goodfellas', 'Jane Rosenthal', 1990, 'male'),
+       ('Cate', 'Blanchett', 53, 'Blue Jasmine', 'Carolyn Marks Blackwood', 2013, 'female'),
+       ('Johnny', 'Depp', 60, 'Pirates of the Caribbean: The Curse of the Black Pearl', 'Jerry Bruckheimer', 2003, 'male'),
+       ('Emma', 'Stone', 35, 'La La Land', 'Allison Shearmur', 2016, 'female'),
+       ('Anthony', 'Hopkins', 85, 'The Silence of the Lambs', 'Mel Gibson', 1991, 'male'),
+       ('Scarlett', 'Johansson', 39, 'Lost in Translation', 'Joel Silver', 2003, 'female'),
+       ('Harrison', 'Ford', 81, 'Raiders of the Lost Ark', 'Kathleen Kennedy', 1981, 'male');
+alter TABLE movie add fee REAL;
+INSERT INTO "movie" ("name", "surname", "age", "movie_name", "manager", "release_year", "sex", "fee_actors")
+VALUES ('Tom', 'Hanks', 65, 'Forrest Gump', 'Steven Spielberg', 1994, 'male', 10000000),
+       ('Meryl', 'Streep', 72, 'The Devil Wears Prada', 'Kevin Huvane', 2006, 'female', 8000000),
+       ('Leonardo', 'DiCaprio', 48, 'The Wolf of Wall Street', 'Rick Yorn', 2013, 'male', 12000000),
+       ('Jennifer', 'Lawrence', 31, 'Silver Linings Playbook', 'Jennifer Justman', 2012, 'female', 9000000),
+       ('Brad', 'Pitt', 59, 'Fight Club', 'Cynthia Pett-Dante', 1999, 'male', 11000000),
+       ('Charlize', 'Theron', 48, 'Mad Max: Fury Road', 'Beth Kono', 2015, 'female', 9500000),
+       ('Denzel', 'Washington', 67, 'Training Day', 'Todd Black', 2001, 'male', 8000000),
+       ('Natalie', 'Portman', 41, 'Black Swan', 'Alejandro Amenábar', 2010, 'female', 10000000),
+       ('Robert', 'De Niro', 80, 'Goodfellas', 'Jane Rosenthal', 1990, 'male', 9000000),
+       ('Cate', 'Blanchett', 53, 'Blue Jasmine', 'Carolyn Marks Blackwood', 2013, 'female', 7500000),
+       ('Johnny', 'Depp', 60, 'Pirates of the Caribbean: The Curse of the Black Pearl', 'Jerry Bruckheimer', 2003, 'male', 15000000),
+       ('Emma', 'Stone', 35, 'La La Land', 'Allison Shearmur', 2016, 'female', 8500000),
+       ('Anthony', 'Hopkins', 85, 'The Silence of the Lambs', 'Mel Gibson', 1991, 'male', 8000000),
+       ('Scarlett', 'Johansson', 39, 'Lost in Translation', 'Joel Silver', 2003, 'female', 9500000),
+       ('Harrison', 'Ford', 81, 'Raiders of the Lost Ark', 'Kathleen Kennedy', 1981, 'male', 10000000);
+ALTER TABLE movie RENAME COLUMN fee TO fee_actors;
+alter TABLE movie add city TEXT;
+INSERT INTO movie (name, surname, age, movie_name, manager, release_year, sex, fee_actors, city)
+VALUES
+    ('Tom', 'Hanks', 65, 'Forrest Gump', 'Steven Spielberg', 1994, 'male', 10000000, 'Los Angeles'),
+    ('Meryl', 'Streep', 72, 'The Devil Wears Prada', 'Kevin Huvane', 2006, 'female', 8000000, 'New York'),
+    ('Leonardo', 'DiCaprio', 48, 'The Wolf of Wall Street', 'Rick Yorn', 2013, 'male', 12000000, 'Los Angeles'),
+    ('Jennifer', 'Lawrence', 31, 'Silver Linings Playbook', 'Jennifer Justman', 2012, 'female', 9000000, 'Los Angeles'),
+    ('Brad', 'Pitt', 59, 'Fight Club', 'Cynthia Pett-Dante', 1999, 'male', 11000000, 'Los Angeles'),
+    ('Charlize', 'Theron', 48, 'Mad Max: Fury Road', 'Beth Kono', 2015, 'female', 9500000, 'Los Angeles'),
+    ('Denzel', 'Washington', 67, 'Training Day', 'Todd Black', 2001, 'male', 8000000, 'Los Angeles'),
+    ('Natalie', 'Portman', 41, 'Pirates of the Caribbean: The Curse of the Black Pearl', 'Alejandro Amenábar', 2010, 'female', 10000000, 'Los Angeles'),
+    ('Robert', 'De Niro', 80, 'Goodfellas', 'Jane Rosenthal', 1990, 'male', 9000000, 'New York'),
+    ('Cate', 'Blanchett', 53, 'Blue Jasmine', 'Carolyn Marks Blackwood', 2013, 'female', 7500000, 'Los Angeles'),
+    ('Johnny', 'Depp', 60, 'Pirates of the Caribbean: The Curse of the Black Pearl', 'Jerry Bruckheimer', 2003, 'male', 10000000, 'Los Angeles'),
+    ('Emma', 'Stone', 35, 'La La Land', 'Allison Shearmur', 2016, 'female', 8500000, 'Los Angeles'),
+    ('Anthony', 'Hopkins', 85, 'The Silence of the Lambs', 'Mel Gibson', 1991, 'male', 8000000, 'Los Angeles'),
+    ('Scarlett', 'Johansson', 39, 'Lost in Translation', 'Joel Silver', 2003, 'female', 9500000, 'New York'),
+    ('Harrison', 'Ford', 81, 'Raiders of the Lost Ark', 'Kathleen Kennedy', 1981, 'male', 10000000, 'Los Angeles');
+SELECT  DISTINCT name,surname FROM  movie WHERE release_year< 2000 and release_year>1990;
+SELECT movie_name FROM movie WHERE (name, surname) IN (
+    SELECT name, surname
+    FROM movie
+    GROUP BY name, surname
+    HAVING COUNT(*) >= 2
+)
+ORDER BY surname ASC;
+SELECT COUNT(name) FROM movie WHERE sex = 'male' and age >55;
+SELECT name, surname FROM movie WHERE (name, surname) IN (
+    SELECT name, surname
+    FROM movie
+    GROUP BY name, surname
+    HAVING COUNT(*) >= 2
+) and fee_actors = 10000000;
+SELECT SUM (fee_actors) FROM movie WHERE release_year  BETWEEN 1995 AND 2005;
+SELECT movie_name, name, surname FROM movie WHERE release_year - age <35;
+SELECT movie_name FROM movie WHERE movie_name LIKE '% %'  AND movie_name NOT LIKE '% % %';
+SELECT * from movie;
